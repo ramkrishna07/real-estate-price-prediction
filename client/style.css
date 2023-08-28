@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* Reset some default styles */
+body, h1, h2, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.prediction-form {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+/* ... (previous CSS code) ... */
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 0.25rem;
+    position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+.radio-group label:hover {
+	cursor: pointer;
+}
+
+.radio-group input:checked + label {
+	background-color: #a5dc86;
+	box-shadow: none;
+}
+/* ... (remaining CSS code) ... */
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#prediction-result {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+
+#uiEstimatedPrice {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+}
+
+#uiEstimatedPrice h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+#predicted-price {
+    font-size: 1.5rem;
+    color: #333;
+}
