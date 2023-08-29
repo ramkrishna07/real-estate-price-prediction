@@ -1,129 +1,147 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-/* Reset some default styles */
-body, h1, h2, p, form {
+
+@import url('https://fonts.googleapis.com/css2?family=Phudu&display=swap');
+body {
+    font-family: 'Phudu', cursive;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; /* Needed for positioning pseudo-element */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1592595896551-12b371d546d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+    background-size: cover;
+    opacity: 0.85; /* Adjust opacity here */
+    z-index: -1; /* Place behind other content */
 }
 
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
+#main-content {
+    margin-left: 20%;
+    margin-right: 2%;
+    margin-bottom: 4rem;
+    width: 400px;
     padding: 2rem;
-}
-
-.prediction-form {
-    background-color: white;
-    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
-
-h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+.header{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 300px 0;
 }
-
+h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #151515;
+}
+.header p{
+    font-size: 20px;
+    text-align: center;
+    color: #151515;
+}
+.header h2{
+    text-align: center;
+    color: #151515;
+}
+.Area input{
+    width: 93%;
+}
 label {
     display: block;
-    margin-bottom: 0.5rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
 }
 
-input,
-select {
+select,
+input {
     width: 100%;
-    padding: 0.5rem;
+    padding: 10px;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.7);
 }
-/* ... (previous CSS code) ... */
-
-.radio-group {
-    display: flex;
-    gap: 1rem;
-    overflow: hidden;
-}
-
-.radio-group label {
-    display: flex;
-    align-items: center;
-    background-color: #e4e4e4;
-	color: rgba(0, 0, 0, 0.6);
-	font-size: 14px;
-	line-height: 1;
-	text-align: center;
-	padding: 8px 16px;
-	margin-right: -1px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-	transition: all 0.1s ease-in-out;
-}
-
-.radio-group input[type="radio"] {
-    margin-right: 0.25rem;
-    position: absolute !important;
-	clip: rect(0, 0, 0, 0);
-	height: 1px;
-	width: 1px;
-	border: 0;
-	overflow: hidden;
-}
-.radio-group label:hover {
-	cursor: pointer;
-}
-
-.radio-group input:checked + label {
-	background-color: #a5dc86;
-	box-shadow: none;
-}
-/* ... (remaining CSS code) ... */
 
 button {
     display: block;
     width: 100%;
-    padding: 0.75rem;
+    padding: 12px;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 button:hover {
     background-color: #555;
 }
 
-#prediction-result {
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-
-#uiEstimatedPrice {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
-}
-
-#uiEstimatedPrice h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+h2 {
+    margin-top: 1.5rem;
+    font-size: 18px;
+    color: #333;
 }
 
 #predicted-price {
-    font-size: 1.5rem;
+    font-size: 24px;
     color: #333;
+    margin-top: 0.5rem;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+@media (max-width:700px){
+    body{
+        flex-direction: column;
+    }
+    #main-content {
+        margin: 0 0 4rem 0;
+    }
+    .header{
+        padding: 0 0 80px 0;
+    }    
+}
+
+@media (max-width:480px){
+    #main-content{
+        max-width: 300px;
+    }
+}
+@media (max-width:380px){
+    #main-content{
+        max-width: 250px;
+    }
+}
+@media (max-width:330px){
+    #main-content{
+        max-width: 200px;
+    }
 }
