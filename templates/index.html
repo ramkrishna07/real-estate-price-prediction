@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <div>
+        <label for="location">Location:</label>
+        <select id="dropdown" name="location">
+            <option value="">Select a location</option>
+        </select>
+    </div>
+    <div>
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" value="0">
+    </div>
+    <div>
+        <label for="bathrooms">Bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" value="0">
+    </div>
+    <div>
+        <label for="area">Area (sqft):</label>
+        <input type="number" id="area" name="area" value="0">
+    </div>
+    <div>
+        <button id="predict-button">Predict Price</button>
+    </div>
+    <div>
+        <h2>Predicted Price:</h2>
+        <p id="predicted-price">$0</p>
+    </div>
+    <script>
+    var dropdown = document.getElementById("dropdown");
+
+// Generate the URL for the JSON file using Jinja2 templating
+var jsonUrl = "{{ url_for('static', filename='columns.json') }}";
+
+// Fetch JSON data from the generated URL
+fetch(jsonUrl)
+    .then(response => response.json())
+    .then(jsonData => {
+        var dataColumns = jsonData.data_columns;
+
+        dataColumns.forEach(function(column) {
+            var option = document.createElement("option");
+            option.value = column;
+            option.text = column;
+            dropdown.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching JSON:', error);
+    });
+        document.getElementById('predict-button').addEventListener('click', async () => {
+            const location = document.getElementById('dropdown').value;
+            const bedrooms = parseInt(document.getElementById('bedrooms').value);
+            const bathrooms = parseInt(document.getElementById('bathrooms').value);
+            const area = parseInt(document.getElementById('area').value);
+
+            const data = {
+            '0': area,
+            '1': bathrooms,
+            '2': bedrooms,
+            '3': location
+            };
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            document.getElementById('predicted-price').textContent = `$${result.predicted_price.toFixed(2)}`;
+        });
+    </script>
+</body>
+</html>
+
