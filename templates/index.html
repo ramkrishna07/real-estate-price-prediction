@@ -104,7 +104,14 @@ fetch(jsonUrl)
             });
 
             const result = await response.json();
-            document.getElementById('predicted-price').textContent = `${result.predicted_price.toFixed(2)} Lakh`;
+            const predictedPrice = result.predicted_price;
+
+            if (predictedPrice <= 0) {
+                alert('Input area is very small. Please check your inputs.');
+            }else{
+                document.getElementById('predicted-price').textContent = `${predictedPrice.toFixed(2)} Lakh`;
+            }
+            
         });
     </script>
 </body>
